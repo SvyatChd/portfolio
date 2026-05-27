@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chegus Svyatoslav — фотограф</title>
+  <meta name="description" content="Портфолио фотографа Chegus Svyatoslav" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #120f16;
+      --bg-2: #1b1420;
+      --card: rgba(255,255,255,0.065);
+      --card-strong: rgba(255,255,255,0.105);
+      --text: #fff7ee;
+      --muted: #cdbfb0;
+      --line: rgba(255,255,255,0.12);
+      --accent: #e6c18a;
+      --accent-2: #c47f8a;
+      --accent-3: #8f6bd8;
+      --accent-dark: #20150e;
+      --radius: 30px;
+      --radius-sm: 20px;
+      --shadow: 0 28px 90px rgba(0,0,0,0.34);
+      --shadow-soft: 0 14px 42px rgba(0,0,0,0.20);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Manrope', Arial, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 14% 6%, rgba(196,127,138,0.22), transparent 26%),
+        radial-gradient(circle at 90% 16%, rgba(230,193,138,0.16), transparent 22%),
+        radial-gradient(circle at 60% 90%, rgba(143,107,216,0.14), transparent 28%),
+        linear-gradient(180deg, #0d0b10 0%, #17111d 48%, #100d14 100%);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+      background-size: 44px 44px;
+      mask-image: linear-gradient(to bottom, rgba(0,0,0,0.55), transparent 90%);
+      z-index: -1;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { display: block; width: 100%; height: 100%; object-fit: cover; }
+
+    .container { width: min(1240px, calc(100% - 28px)); margin: 0 auto; }
+
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(18px);
+      background: rgba(10,10,12,0.68);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .nav {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+    .logo {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      letter-spacing: -0.02em;
+    }
+    .menu {
+      display: flex;
+      gap: 22px;
+      color: var(--muted);
+      font-size: 14px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .menu a { transition: 0.22s ease; }
+    .menu a:hover { color: var(--text); }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 0 22px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.14);
+      background: var(--accent);
+      color: #131313;
+      font-size: 14px;
+      font-weight: 600;
+      transition: 0.28s ease;
+      cursor: pointer;
+      box-shadow: var(--shadow-soft);
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn.secondary {
+      background: transparent;
+      color: var(--text);
+      box-shadow: none;
+    }
+
+    .hero {
+      padding: 54px 0 34px;
+    }
+    .hero-shell {
+      display: grid;
+      grid-template-columns: 1.02fr 0.98fr;
+      gap: 26px;
+      align-items: stretch;
+    }
+    .hero-copy, .hero-visual {
+      position: relative;
+      border-radius: 34px;
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(196,127,138,0.08));
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+    .hero-copy {
+      padding: 42px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 720px;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: .18em;
+      font-size: 12px;
+      margin-bottom: 18px;
+    }
+    .eyebrow::before {
+      content: "";
+      width: 28px;
+      height: 1px;
+      background: rgba(255,255,255,0.35);
+    }
+    h1 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(44px, 8vw, 88px);
+      line-height: 0.9;
+      letter-spacing: -0.04em;
+      max-width: 680px;
+      margin-bottom: 20px;
+    }
+
+    .brand-name {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(54px, 9vw, 104px);
+      line-height: .86;
+      letter-spacing: -0.065em;
+      background: linear-gradient(135deg, #fff8ed 0%, #e6c18a 46%, #c47f8a 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-shadow: 0 18px 60px rgba(196,127,138,0.08);
+    }
+
+    .hero-text {
+      max-width: 560px;
+      color: var(--muted);
+      font-size: 18px;
+      margin-bottom: 28px;
+    }
+    .hero-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 32px;
+    }
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-top: 10px;
+    }
+    .hero-stat {
+      padding: 16px 18px;
+      border-radius: 20px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+    .hero-stat strong {
+      display: block;
+      font-size: 22px;
+      margin-bottom: 4px;
+    }
+    .hero-stat span {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .hero-visual {
+      min-height: 720px;
+      padding: 20px;
+      display: grid;
+      grid-template-columns: 1fr 0.82fr;
+      gap: 18px;
+      align-items: stretch;
+    }
+    .hero-main-photo,
+    .hero-side-stack > div,
+    .gallery-card,
+    .feature-card,
+    .about-card,
+    .request-box,
+    .contact-box,
+    .quote-box,
+    .process-card {
+      position: relative;
+      overflow: hidden;
+      border-radius: var(--radius);
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: var(--shadow-soft);
+    }
+    .hero-main-photo { min-height: 100%; }
+    .hero-side-stack {
+      display: block;
+      min-height: 100%;
+    }
+    .hero-side-stack > div { min-height: 100%; }
+
+    .watermark {
+      position: absolute;
+      right: 18px;
+      bottom: 12px;
+      font-size: clamp(26px, 3vw, 44px);
+      font-style: italic;
+      font-family: "Times New Roman", Georgia, serif;
+      color: rgba(255,255,255,0.72);
+      text-shadow: 0 2px 10px rgba(0,0,0,0.30);
+      letter-spacing: 0.03em;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    .section { padding: 36px 0 78px; }
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 20px;
+      margin-bottom: 24px;
+    }
+    h2 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(30px, 5vw, 58px);
+      line-height: 0.95;
+      letter-spacing: -0.04em;
+    }
+    .section-desc { max-width: 580px; color: var(--muted); }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .feature-card { padding: 26px; }
+    .feature-card .num {
+      display: inline-flex;
+      width: 38px;
+      height: 38px;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      margin-bottom: 18px;
+      background: rgba(255,255,255,0.08);
+      color: var(--accent);
+      font-size: 13px;
+      font-weight: 700;
+    }
+    .feature-card h3 { margin-bottom: 10px; font-size: 22px; }
+    .feature-card p { color: var(--muted); }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 16px;
+    }
+    .gallery-card { min-height: 310px; background: rgba(255,255,255,0.03); }
+    .gallery-card.tall { min-height: 680px; grid-column: span 6; }
+    .gallery-card.medium { min-height: 460px; grid-column: span 6; }
+    .gallery-card.small { min-height: 370px; grid-column: span 4; }
+    .gallery-card.small-wide { min-height: 370px; grid-column: span 8; }
+    .gallery-card img { transition: transform .5s ease; }
+    .gallery-card:hover img { transform: scale(1.03); }
+
+    .caption {
+      position: absolute;
+      left: 16px;
+      bottom: 16px;
+      padding: 13px 15px;
+      max-width: calc(100% - 110px);
+      border-radius: 16px;
+      background: rgba(0,0,0,0.34);
+      border: 1px solid rgba(255,255,255,0.08);
+      backdrop-filter: blur(12px);
+    }
+    .caption strong { display: block; font-size: 15px; }
+    .caption span { color: rgba(255,255,255,0.78); font-size: 13px; }
+
+    .quote-box {
+      padding: 32px;
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 22px;
+      align-items: center;
+      background: linear-gradient(135deg, rgba(230,193,138,0.14), rgba(255,255,255,0.03));
+    }
+    .quote-box blockquote {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(26px, 3vw, 40px);
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+    }
+    .quote-box p { color: var(--muted); margin-top: 14px; }
+    .quote-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: flex-end;
+    }
+    .tag {
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .process {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+    .process-card { padding: 24px; }
+    .process-step {
+      color: var(--accent);
+      font-size: 12px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    .process-card h3 { font-size: 20px; margin-bottom: 10px; }
+    .process-card p { color: var(--muted); }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      align-items: stretch;
+    }
+    .about-photo { min-height: 720px; }
+    .about-card { padding: 34px; }
+    .about-card p { color: var(--muted); margin-top: 16px; font-size: 16px; }
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 26px;
+    }
+    .stat {
+      padding: 16px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+    .stat strong { display: block; font-size: 22px; margin-bottom: 4px; }
+    .stat span { color: var(--muted); font-size: 13px; }
+
+    .request { padding: 10px 0 78px; }
+    .request-box {
+      background: linear-gradient(135deg, rgba(239,227,208,0.12), rgba(255,255,255,0.04));
+      padding: 34px;
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 28px;
+    }
+    .request-box p, .contact-box p { color: var(--muted); margin-top: 14px; }
+    .request-form { display: grid; gap: 12px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .request-form input,
+    .request-form select,
+    .request-form textarea {
+      width: 100%;
+      border: 1px solid rgba(255,255,255,0.09);
+      border-radius: 18px;
+      background: rgba(255,255,255,0.05);
+      color: var(--text);
+      padding: 16px 16px;
+      font: inherit;
+      outline: none;
+    }
+    .request-form textarea { min-height: 120px; resize: vertical; }
+    .request-form input::placeholder,
+    .request-form textarea::placeholder { color: rgba(255,255,255,0.42); }
+    .request-form option { color: #111; }
+    .form-note, .legal-note {
+      color: rgba(255,255,255,0.46);
+      font-size: 12px;
+      line-height: 1.45;
+    }
+    .form-status {
+      display: none;
+      padding: 12px 14px;
+      border-radius: 16px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.08);
+      color: rgba(255,255,255,0.82);
+      font-size: 13px;
+    }
+    .form-status.show { display: block; }
+
+    .contact { padding: 0 0 76px; }
+    .contact-box {
+      padding: 32px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+    .contact-list { display: grid; gap: 14px; margin-top: 18px; }
+    .contact-item {
+      padding: 18px 18px;
+      background: rgba(255,255,255,0.05);
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+    .contact-item span {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+      margin-bottom: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+
+    .footer {
+      padding: 20px 0 40px;
+      color: rgba(255,255,255,0.55);
+      font-size: 13px;
+      text-align: center;
+    }
+
+    @media (max-width: 980px) {
+      .menu { display: none; }
+      .hero-shell,
+      .features,
+      .quote-box,
+      .process,
+      .about-grid,
+      .request-box,
+      .contact-box,
+      .form-row { grid-template-columns: 1fr; }
+      .hero-copy { min-height: auto; }
+      .hero-visual { min-height: 600px; }
+      .hero-stats,
+      .stats { grid-template-columns: 1fr; }
+      .gallery-card.tall,
+      .gallery-card.medium,
+      .gallery-card.small,
+      .gallery-card.small-wide { grid-column: span 12; min-height: 430px; }
+      .quote-tags { justify-content: flex-start; }
+    }
+
+    @media (max-width: 640px) {
+      .container { width: min(100% - 20px, 1240px); }
+      .hero { padding-top: 30px; }
+      .hero-copy,
+      .hero-visual,
+      .feature-card,
+      .process-card,
+      .about-card,
+      .request-box,
+      .contact-box,
+      .quote-box { padding: 24px; }
+      .hero-visual { padding: 14px; grid-template-columns: 1fr; }
+      .hero-main-photo { min-height: 360px; }
+      .hero-side-stack { grid-template-columns: 1fr 1fr; grid-template-rows: none; }
+      .about-photo { min-height: 420px; }
+      .watermark { right: 14px; bottom: 10px; font-size: 28px; }
+      .nav { min-height: 68px; }
+      .logo { font-size: 16px; }
+    }
+  
+    /* Compact mobile version */
+    @media (max-width: 640px) {
+      .section { padding: 28px 0 42px; }
+      .container { width: min(100% - 16px, 1240px); }
+      .header { backdrop-filter: blur(12px); }
+      .nav { min-height: 60px; gap: 10px; }
+      .logo { font-size: 15px; line-height: 1.05; max-width: 150px; }
+      .nav > .btn { min-height: 40px; padding: 0 14px; font-size: 12px; }
+      .hero { padding-top: 18px; }
+      .hero-copy,
+      .hero-visual,
+      .feature-card,
+      .process-card,
+      .about-card,
+      .request-box,
+      .contact-box,
+      .quote-box { padding: 18px; border-radius: 22px; }
+      .eyebrow { font-size: 10px; margin-bottom: 12px; gap: 8px; }
+      .eyebrow::before { width: 22px; }
+      .brand-name { font-size: clamp(42px, 15vw, 64px); margin-bottom: 14px; }
+      .hero-text { font-size: 15px; margin-bottom: 18px; }
+      .hero-actions { gap: 10px; margin-bottom: 18px; }
+      .hero-actions .btn { flex: 1 1 100%; min-height: 42px; font-size: 13px; }
+      .hero-stats { gap: 8px; }
+      .hero-visual { padding: 10px; grid-template-columns: 1fr; min-height: auto; gap: 10px; }
+      .hero-main-photo { min-height: 280px; border-radius: 18px; }
+      .hero-stack > div,
+      .hero-side-stack > div { min-height: 180px; border-radius: 18px; }
+      .section-head { margin-bottom: 18px; gap: 12px; }
+      h2 { font-size: clamp(28px, 9vw, 40px); }
+      h3 { font-size: 18px; }
+      .section-desc,
+      .feature-card p,
+      .process-card p,
+      .about-card p,
+      .request-box p,
+      .contact-box p { font-size: 14px; }
+      .gallery { gap: 10px; }
+      .gallery-card.tall,
+      .gallery-card.medium,
+      .gallery-card.small,
+      .gallery-card.small-wide { min-height: 290px; border-radius: 20px; }
+      .caption { left: 10px; bottom: 10px; padding: 10px 12px; max-width: calc(100% - 78px); border-radius: 14px; }
+      .caption strong { font-size: 13px; }
+      .caption span { font-size: 12px; }
+      .about-photo { min-height: 320px; }
+      .watermark { right: 10px; bottom: 8px; font-size: 22px; }
+      .request-form .btn { width: 100%; min-height: 44px; font-size: 14px; }
+    }
+
+    @media (max-width: 420px) {
+      .container { width: calc(100% - 14px); }
+      .logo { font-size: 14px; max-width: 132px; }
+      .nav > .btn { padding: 0 12px; font-size: 11px; }
+      .brand-name { font-size: clamp(38px, 14vw, 54px); }
+      .hero-main-photo { min-height: 245px; }
+      .hero-stack > div,
+      .hero-side-stack > div { min-height: 160px; }
+      .gallery-card.tall,
+      .gallery-card.medium,
+      .gallery-card.small,
+      .gallery-card.small-wide { min-height: 260px; }
+    }
+
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container nav">
+      <a class="logo" href="#top">Chegus Svyatoslav</a>
+      <nav class="menu">
+        <a href="#portfolio">Портфолио</a>
+        <a href="#stories">Истории</a>
+        <a href="#street">Street</a>
+        <a href="#about">Обо мне</a>
+        <a href="#request">Заявка</a>
+        <a href="#contact">Контакты</a>
+      </nav>
+      <a class="btn" href="#request">Записаться на съёмку</a>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-shell">
+        <div class="hero-copy">
+          <div>
+            <div class="eyebrow">Портфолио фотографа</div>
+            <h1 class="brand-name">Chegus<br>svyatoslav</h1>
+            <p class="hero-text">
+              Атмосферные портреты, живые истории и визуально сильные кадры.
+              Здесь можно посмотреть работы, выбрать формат съёмки и сразу оставить заявку.
+            </p>
+            <div class="hero-actions">
+              <a class="btn" href="#portfolio">Смотреть работы</a>
+              <a class="btn secondary" href="#request">Оставить заявку</a>
+            </div>
+          </div>
+
+          <div class="hero-stats">
+            <div class="hero-stat">
+              <strong>Portrait</strong>
+              <span>эмоция, образ, крупный план</span>
+            </div>
+            <div class="hero-stat">
+              <strong>Love story</strong>
+              <span>истории, прогулки, живые моменты</span>
+            </div>
+            <div class="hero-stat">
+              <strong>Street</strong>
+              <span>город, характер, естественная среда</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <div class="hero-main-photo">
+            <img src="images/photo-2.png" alt="Фотография с очками" />
+            <div class="watermark">cheg</div>
+          </div>
+          <div class="hero-side-stack">
+            <div>
+              <img src="images/photo-8.jpg" alt="Крупный портрет" />
+              <div class="watermark">cheg</div>
+            </div>
+            <div>
+              <img src="images/photo-9.jpg" alt="Модный портрет" />
+              <div class="watermark">cheg</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <h2>Почему эта съёмка<br>цепляет</h2>
+          <p class="section-desc">Портфолио помогает почувствовать стиль съёмки заранее: атмосферу, подачу, работу с образом, светом и настроением.</p>
+        </div>
+        <div class="features">
+          <article class="feature-card">
+            <div class="num">01</div>
+            <h3>Сильный образ</h3>
+            <p>Кадры строятся вокруг настроения, пластики, фактуры и визуального характера.</p>
+          </article>
+          <article class="feature-card">
+            <div class="num">02</div>
+            <h3>Живые эмоции</h3>
+            <p>Даже постановочная съёмка выглядит естественно, без ощущения “случайной позы”.</p>
+          </article>
+          <article class="feature-card">
+            <div class="num">03</div>
+            <h3>Эстетичная подача</h3>
+            <p>Сайт и портфолио собраны так, чтобы тебя хотелось листать дальше и оставить заявку.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="portfolio">
+      <div class="container">
+        <div class="section-head">
+          <h2>Портфолио</h2>
+          <p class="section-desc">Подборка главных кадров в авторском стиле. Все изображения уже с аккуратной вотермаркой в правом нижнем углу.</p>
+        </div>
+        <div class="gallery">
+          <article class="gallery-card tall">
+            <img src="images/photo-4.jpg" alt="Портрет с ремнем" />
+            <div class="caption"><strong>Editorial Portrait</strong><span>dramatic style</span></div>
+            <div class="watermark">cheg</div>
+          </article>
+          <article class="gallery-card tall">
+            <img src="images/photo-1.jpg" alt="Портрет с руками" />
+            <div class="caption"><strong>Candid Portrait</strong><span>gesture and emotion</span></div>
+            <div class="watermark">cheg</div>
+          </article>
+          <article class="gallery-card small">
+            <img src="images/photo-8.jpg" alt="Street portrait" />
+            <div class="caption"><strong>Texture & Gaze</strong><span>close-up portrait</span></div>
+            <div class="watermark">cheg</div>
+          </article>
+          <article class="gallery-card small-wide">
+            <img src="images/photo-9.jpg" alt="Natural portrait" />
+            <div class="caption"><strong>Minimal Frame</strong><span>fashion silhouette</span></div>
+            <div class="watermark">cheg</div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="stories">
+      <div class="container">
+        <div class="section-head">
+          <h2>Истории</h2>
+          <p class="section-desc">Живые кадры про отношения, прогулки и атмосферу момента.</p>
+        </div>
+        <div class="gallery">
+          <article class="gallery-card medium">
+            <img src="images/photo-6.jpg" alt="Пара лежит на траве" />
+            <div class="caption"><strong>Love Story</strong><span>tender moment</span></div>
+            <div class="watermark">cheg</div>
+          </article>
+          <article class="gallery-card medium">
+            <img src="images/photo-7.jpg" alt="Пара на дороге" />
+            <div class="caption"><strong>Walk Together</strong><span>natural interaction</span></div>
+            <div class="watermark">cheg</div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="quote-box">
+          <div>
+            <blockquote>Съёмка — это не просто красивые фото. Это образ, эмоция и ощущение, к которому хочется вернуться.</blockquote>
+            <p>В кадре важны настроение, детали, жесты и честная эмоция — всё то, что делает фотографию личной.</p>
+          </div>
+          <div class="quote-tags">
+            <span class="tag">portrait</span>
+            <span class="tag">editorial</span>
+            <span class="tag">love story</span>
+            <span class="tag">street</span>
+            <span class="tag">mood</span>
+            <span class="tag">style</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="street">
+      <div class="container">
+        <div class="section-head">
+          <h2>Уличные портреты</h2>
+          <p class="section-desc">Lifestyle и street-фотография: естественная среда, живой свет и визуальный характер.</p>
+        </div>
+        <div class="gallery">
+          <article class="gallery-card medium">
+            <img src="images/photo-8.jpg" alt="Уличный портрет в очках" />
+            <div class="caption"><strong>Street Style</strong><span>urban look</span></div>
+            <div class="watermark">cheg</div>
+          </article>
+          <article class="gallery-card medium">
+            <img src="images/photo-9.jpg" alt="Зимний портрет" />
+            <div class="caption"><strong>Natural Portrait</strong><span>quiet mood</span></div>
+            <div class="watermark">cheg</div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <h2>Как проходит<br>съёмка</h2>
+          <p class="section-desc">Небольшой блок добавляет ощущение структуры и делает сайт более профессиональным.</p>
+        </div>
+        <div class="process">
+          <article class="process-card">
+            <div class="process-step">Шаг 1</div>
+            <h3>Заявка</h3>
+            <p>Ты оставляешь заявку на сайте или пишешь напрямую в Telegram.</p>
+          </article>
+          <article class="process-card">
+            <div class="process-step">Шаг 2</div>
+            <h3>Обсуждение</h3>
+            <p>Мы выбираем формат, настроение, образы, локацию и удобную дату.</p>
+          </article>
+          <article class="process-card">
+            <div class="process-step">Шаг 3</div>
+            <h3>Съёмка</h3>
+            <p>Работаем над кадрами спокойно и в комфортном ритме, без лишней суеты.</p>
+          </article>
+          <article class="process-card">
+            <div class="process-step">Шаг 4</div>
+            <h3>Результат</h3>
+            <p>Ты получаешь готовые фотографии с нужным настроением и сильной подачей.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <div class="container about-grid">
+        <div class="about-photo">
+          <img src="images/photo-4.jpg" alt="Portrait photo" />
+          <div class="watermark">cheg</div>
+        </div>
+        <div class="about-card">
+          <div class="eyebrow">О фотографе</div>
+          <h2>Обо мне</h2>
+          <p>Я создаю выразительные портретные кадры, в которых важны не только свет и композиция, но и ощущение, характер, внутренняя энергия человека в кадре.</p>
+          <p>Мне близка чистая визуальная подача: минималистичный фон, продуманная поза, внимание к деталям, макияжу, жесту и атмосфере. В кадре важен образ — цельный и живой.</p>
+          <div class="stats">
+            <div class="stat"><strong>Портрет</strong><span>визуальная история</span></div>
+            <div class="stat"><strong>Стиль</strong><span>редакционный подход</span></div>
+            <div class="stat"><strong>Атмосфера</strong><span>настроение и композиция</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="request" id="request">
+      <div class="container">
+        <div class="request-box">
+          <div>
+            <div class="eyebrow">Заявка</div>
+            <h2>Запись на фотосессию</h2>
+            <p>Оставь заявку на фотосессию — я получу её и свяжусь с тобой, чтобы обсудить детали, дату, формат и идею съёмки.</p>
+            <p class="form-note">Нажимая кнопку «Отправить заявку», ты передаёшь контактные данные для связи по поводу фотосессии.</p>
+          </div>
+          <form class="request-form" id="photoRequestForm">
+            <div class="form-row">
+              <input type="text" name="clientName" placeholder="Имя" required />
+              <input type="tel" name="phone" placeholder="Номер телефона" required />
+            </div>
+            <input type="text" name="messenger" placeholder="Telegram / Instagram* / WhatsApp" />
+            <p class="legal-note">*Instagram принадлежит компании Meta, деятельность которой признана экстремистской и запрещена на территории РФ.</p>
+            <div class="form-row">
+              <select name="shootType" required>
+                <option value="">Тип фотосессии</option>
+                <option value="Портретная съёмка">Портретная съёмка</option>
+                <option value="Fashion / editorial">Fashion / editorial</option>
+                <option value="Love story">Love story</option>
+                <option value="Семейная съёмка">Семейная съёмка</option>
+                <option value="Другое">Другое</option>
+              </select>
+              <input type="date" name="shootDate" />
+            </div>
+            <textarea name="comment" placeholder="Комментарий: идея съёмки, пожелания, удобное время, референсы"></textarea>
+            <button class="btn" type="submit">Отправить заявку</button>
+            <div class="form-status" id="formStatus"></div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <div class="container">
+        <div class="contact-box">
+          <div>
+            <div class="eyebrow">Контакты</div>
+            <h2>Связаться</h2>
+            <p>Если хочешь обсудить съёмку, сотрудничество или посмотреть больше работ — напиши любым удобным способом.</p>
+          </div>
+          <div class="contact-list">
+            <a class="contact-item" href="mailto:svytik128@gmail.com">
+              <span>Email</span>
+              svytik128@gmail.com
+            </a>
+            <a class="contact-item" href="https://instagram.com/c_h_e_g_u_s" target="_blank">
+              <span>Instagram*</span>
+              @c_h_e_g_u_s
+            </a>
+            <p class="legal-note">*Instagram принадлежит компании Meta, деятельность которой признана экстремистской и запрещена на территории РФ.</p>
+            <a class="contact-item" href="https://t.me/svyatdee" target="_blank">
+              <span>Telegram</span>
+              @svyatdee
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">© 2026 Chegus Svyatoslav — фотография</footer>
+
+  <script>
+    const form = document.getElementById('photoRequestForm');
+    const statusBox = document.getElementById('formStatus');
+    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbx2uLRJLUXhf2mDQIM81vNmMEoelO8mWR7mizcIdfX7ggTEZLwhir5N-5PB2msSTuLbnQ/exec';
+
+    function cleanText(value){ return String(value || '').trim(); }
+    function formatDate(value){ if(!value) return 'Не указана'; const p=value.split('-'); return p.length===3 ? p[2]+'.'+p[1]+'.'+p[0] : value; }
+    function showStatus(text){ statusBox.classList.add('show'); statusBox.textContent=text; }
+
+    async function sendToTelegram(payload){
+      try{
+        await fetch(SCRIPT_URL,{ method:'POST', mode:'no-cors', headers:{'Content-Type':'text/plain;charset=utf-8'}, body:JSON.stringify(payload) });
+        showStatus('Спасибо! Заявка отправлена. Я скоро свяжусь с тобой.');
+        return true;
+      } catch(error) {
+        showStatus('Не получилось отправить заявку. Попробуй ещё раз или напиши мне напрямую в Telegram.');
+        return false;
+      }
+    }
+
+    form.addEventListener('submit', async function(event){
+      event.preventDefault();
+      const data = new FormData(form);
+      const payload = {
+        type:'request',
+        clientName:cleanText(data.get('clientName')),
+        phone:cleanText(data.get('phone')),
+        messenger:cleanText(data.get('messenger') || 'Не указан'),
+        shootType:cleanText(data.get('shootType') || 'Не указан'),
+        shootDate:cleanText(formatDate(data.get('shootDate'))),
+        comment:cleanText(data.get('comment') || 'Без комментария'),
+        createdAt:new Date().toLocaleString('ru-RU')
+      };
+      showStatus('Отправляю заявку...');
+      const success = await sendToTelegram(payload);
+      if(success) form.reset();
+    });
+  </script>
+</body>
+</html>
