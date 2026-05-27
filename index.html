@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chegus Svyatoslav — Photographer</title>
+  <meta name="description" content="Портфолио фотографа Chegus Svyatoslav" />
+  <style>
+    :root {
+      --bg: #0f0f10;
+      --card: #171719;
+      --soft: #222225;
+      --text: #f4f1ec;
+      --muted: #aaa39b;
+      --line: rgba(255,255,255,.1);
+      --radius: 28px;
+      --shadow: 0 22px 70px rgba(0,0,0,.35);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: Arial, sans-serif; background: var(--bg); color: var(--text); line-height: 1.55; }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; width: 100%; height: 100%; object-fit: cover; }
+    .container { width: min(1180px, calc(100% - 28px)); margin: 0 auto; }
+    .header { position: sticky; top: 0; z-index: 20; background: rgba(15,15,16,.78); backdrop-filter: blur(18px); border-bottom: 1px solid var(--line); }
+    .nav { min-height: 74px; display: flex; justify-content: space-between; align-items: center; gap: 18px; }
+    .logo { font-size: 19px; letter-spacing: .08em; text-transform: uppercase; }
+    .menu { display: flex; gap: 24px; color: var(--muted); font-size: 14px; }
+    .menu a:hover { color: var(--text); }
+    .btn { display: inline-flex; justify-content: center; align-items: center; min-height: 46px; padding: 0 22px; border-radius: 999px; background: #fff; color: #111; font-size: 14px; border: 1px solid rgba(255,255,255,.16); transition: .25s ease; }
+    .btn:hover { transform: translateY(-2px); }
+    .hero { padding: 78px 0 54px; }
+    .hero-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 30px; align-items: center; }
+    .eyebrow { color: var(--muted); text-transform: uppercase; letter-spacing: .18em; font-size: 12px; margin-bottom: 16px; }
+    h1 { font-family: Georgia, 'Times New Roman', serif; font-size: clamp(44px, 8vw, 96px); line-height: .92; letter-spacing: -.05em; margin-bottom: 22px; }
+    h2 { font-family: Georgia, 'Times New Roman', serif; font-size: clamp(34px, 5vw, 64px); line-height: 1; letter-spacing: -.04em; }
+    .hero-text, .section-desc, .about-card p, .contact-box p { color: var(--muted); font-size: 17px; }
+    .hero-text { max-width: 560px; margin-bottom: 30px; }
+    .photo { position: relative; overflow: hidden; border-radius: var(--radius); background: var(--card); box-shadow: var(--shadow); }
+    .hero-photo { min-height: 740px; }
+    .watermark { position: absolute; right: 20px; bottom: 14px; z-index: 3; color: rgba(255,255,255,.72); font-family: Georgia, 'Times New Roman', serif; font-style: italic; font-size: clamp(28px, 4vw, 54px); letter-spacing: .02em; text-shadow: 0 3px 12px rgba(0,0,0,.35); pointer-events: none; user-select: none; }
+    .section { padding: 58px 0 78px; }
+    .section-head { display: flex; justify-content: space-between; align-items: end; gap: 24px; margin-bottom: 26px; }
+    .section-desc { max-width: 520px; }
+    .gallery { display: grid; grid-template-columns: repeat(12, 1fr); gap: 16px; }
+    .gallery-card { position: relative; overflow: hidden; border-radius: var(--radius); background: var(--soft); box-shadow: var(--shadow); min-height: 360px; }
+    .gallery-card.big { grid-column: span 6; min-height: 650px; }
+    .gallery-card.wide { grid-column: span 8; min-height: 420px; }
+    .gallery-card.small { grid-column: span 4; min-height: 420px; }
+    .gallery-card.medium { grid-column: span 6; min-height: 460px; }
+    .caption { position: absolute; left: 16px; bottom: 16px; z-index: 4; padding: 12px 14px; border-radius: 16px; background: rgba(0,0,0,.42); border: 1px solid rgba(255,255,255,.10); backdrop-filter: blur(14px); }
+    .caption strong { display: block; font-size: 15px; }
+    .caption span { color: rgba(255,255,255,.72); font-size: 13px; }
+    .about-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 30px; align-items: center; }
+    .about-photo { min-height: 680px; }
+    .about-card, .contact-box { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 34px; box-shadow: var(--shadow); }
+    .about-card p { margin-top: 16px; }
+    .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 28px; }
+    .stat { border-top: 1px solid var(--line); padding-top: 14px; }
+    .stat strong { display: block; font-size: 22px; margin-bottom: 4px; }
+    .stat span { color: var(--muted); font-size: 13px; }
+    .contact { padding: 28px 0 70px; }
+    .contact-box { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+    .contact-box p { margin-top: 14px; }
+    .contact-list { display: grid; gap: 14px; }
+    .contact-item { display: block; padding: 16px 18px; border-radius: 18px; background: var(--soft); border: 1px solid var(--line); }
+    .contact-item span { display: block; margin-bottom: 5px; color: var(--muted); font-size: 12px; text-transform: uppercase; letter-spacing: .12em; }
+    .footer { padding: 20px 0 42px; text-align: center; color: rgba(255,255,255,.5); font-size: 13px; }
+    @media (max-width: 900px) {
+      .menu { display: none; }
+      .hero-grid, .about-grid, .contact-box { grid-template-columns: 1fr; }
+      .hero-photo, .about-photo { min-height: 520px; }
+      .section-head { display: block; }
+      .section-desc { margin-top: 14px; }
+      .gallery-card.big, .gallery-card.wide, .gallery-card.small, .gallery-card.medium { grid-column: span 12; min-height: 460px; }
+    }
+    @media (max-width: 560px) {
+      .container { width: min(100% - 20px, 1180px); }
+      .hero { padding-top: 42px; }
+      .hero-photo, .about-photo, .gallery-card.big, .gallery-card.wide, .gallery-card.small, .gallery-card.medium { min-height: 420px; }
+      .stats { grid-template-columns: 1fr; }
+      .about-card, .contact-box { padding: 24px; }
+      .watermark { right: 14px; bottom: 10px; font-size: 30px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container nav">
+      <a class="logo" href="#top">Chegus Svyatoslav</a>
+      <nav class="menu" aria-label="Навигация">
+        <a href="#portfolio">Портфолио</a>
+        <a href="#about">Обо мне</a>
+        <a href="#contact">Контакты</a>
+      </nav>
+      <a class="btn" href="#contact">Связаться</a>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">Photographer portfolio</div>
+          <h1>Chegus Svyatoslav</h1>
+          <p class="hero-text">Портфолио фотографа с акцентом на атмосферу, характер, стиль и визуальное настроение. Здесь собраны выразительные портреты и кадры с яркой подачей.</p>
+          <a class="btn" href="#portfolio">Смотреть работы</a>
+        </div>
+        <div class="photo hero-photo">
+          <img src="images/photo-2.png" alt="Fashion portrait" />
+          <div class="watermark">cheg</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="portfolio">
+      <div class="container">
+        <div class="section-head">
+          <h2>Портфолио</h2>
+          <p class="section-desc">Подборка кадров в авторском стиле. На каждой фотографии добавлена аккуратная вотермарка в правом нижнем углу.</p>
+        </div>
+        <div class="gallery">
+          <article class="gallery-card big"><img src="images/photo-4.jpg" alt="Editorial portrait" /><div class="caption"><strong>Editorial portrait</strong><span>dramatic styling</span></div><div class="watermark">cheg</div></article>
+          <article class="gallery-card big"><img src="images/photo-1.jpg" alt="Close emotion" /><div class="caption"><strong>Close emotion</strong><span>framing & gesture</span></div><div class="watermark">cheg</div></article>
+          <article class="gallery-card small"><img src="images/photo-3.png" alt="Texture and look" /><div class="caption"><strong>Texture & look</strong><span>close-up portrait</span></div><div class="watermark">cheg</div></article>
+          <article class="gallery-card wide"><img src="images/photo-5.jpg" alt="Minimal frame" /><div class="caption"><strong>Minimal frame</strong><span>fashion silhouette</span></div><div class="watermark">cheg</div></article>
+          <article class="gallery-card medium"><img src="images/photo-2.png" alt="Fashion statement" /><div class="caption"><strong>Fashion statement</strong><span>style portrait</span></div><div class="watermark">cheg</div></article>
+          <article class="gallery-card medium"><img src="images/photo-1.jpg" alt="Visual drama" /><div class="caption"><strong>Visual drama</strong><span>hands & composition</span></div><div class="watermark">cheg</div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <div class="container about-grid">
+        <div class="photo about-photo"><img src="images/photo-5.jpg" alt="Author style photo" /><div class="watermark">cheg</div></div>
+        <div class="about-card">
+          <div class="eyebrow">About</div>
+          <h2>Обо мне</h2>
+          <p>Я создаю выразительные портретные кадры, в которых важны не только свет и композиция, но и ощущение, характер, внутренняя энергия человека в кадре.</p>
+          <p>Мне близка чистая визуальная подача: минималистичный фон, продуманная поза, внимание к деталям, макияжу, жесту и атмосфере.</p>
+          <div class="stats">
+            <div class="stat"><strong>Portrait</strong><span>visual storytelling</span></div>
+            <div class="stat"><strong>Style</strong><span>editorial approach</span></div>
+            <div class="stat"><strong>Art</strong><span>mood & composition</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <div class="container">
+        <div class="contact-box">
+          <div>
+            <div class="eyebrow">Contact</div>
+            <h2>Связаться</h2>
+            <p>Если хочешь обсудить съемку, сотрудничество или посмотреть больше работ — пиши любым удобным способом.</p>
+          </div>
+          <div class="contact-list">
+            <a class="contact-item" href="mailto:svytik128@gmail.com"><span>Email</span>svytik128@gmail.com</a>
+            <a class="contact-item" href="https://instagram.com/c_h_e_g_u_s" target="_blank"><span>Instagram</span>@c_h_e_g_u_s</a>
+            <a class="contact-item" href="https://t.me/svyatdee" target="_blank"><span>Telegram</span>@svyatdee</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">© 2026 Chegus Svyatoslav Photography</footer>
+</body>
+</html>
